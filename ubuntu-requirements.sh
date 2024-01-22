@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     apt-get -y update
     apt-get -y install \
     cmake \
-    g++-9 \
+    g++ \
     git \
     python3-dev \
     python3-numpy \
