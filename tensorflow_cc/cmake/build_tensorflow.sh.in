@@ -88,9 +88,9 @@ fi
 
 # set bazel options for c++17 standard if necessary
 cxx_std_opts=""
-if [ "@CMAKE_CXX_STANDARD@" == 17 ]; then
+if [ "@CMAKE_CXX_STANDARD@" == 20 ]; then
     echo "Using C++17 standard"
-    cxx_std_opts="--config=c++17_gcc"
+    cxx_std_opts="--config=c++20_gcc"
 fi
 
 # configure and build
