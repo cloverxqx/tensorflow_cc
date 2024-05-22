@@ -1,4 +1,26 @@
 FROM nvidia/cuda:12.3.1-devel-ubuntu22.04
+# Set cuDNN environment variables
+ENV NV_CUDNN_VERSION=8.9.6.50
+ENV NV_CUDNN_PACKAGE_NAME=libcudnn8
+ENV NV_CUDNN_PACKAGE=libcudnn8=8.9.6.50-1+cuda12.3
+ENV NV_CUDNN_PACKAGE_DEV=libcudnn8-dev=8.9.6.50-1+cuda12.3
+ARG TARGETARCH
+
+# Set the maintainer label
+LABEL maintainer="NVIDIA CORPORATION <cudatools@nvidia.com>"
+LABEL com.nvidia.cudnn.version=8.9.6.50
+
+# Install cuDNN
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/3bf863cc.pub \
+    && echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64 /" > /etc/apt/sources.list.d/cuda.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ${NV_CUDNN_PACKAGE} \
+        ${NV_CUDNN_PACKAGE_DEV} \
+    && apt-mark hold ${NV_CUDNN_PACKAGE} \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 # copy the contents of this repository to the container
 COPY . tensorflow_cc
 # alternatively, clone the repository
