@@ -11,7 +11,7 @@ LABEL maintainer="NVIDIA CORPORATION <cudatools@nvidia.com>"
 LABEL com.nvidia.cudnn.version=8.9.6.50
 
 RUN |1 TARGETARCH=amd64 /bin/sh -c
-/bin/bash
+
 
 # copy the contents of this repository to the container
 COPY . tensorflow_cc
