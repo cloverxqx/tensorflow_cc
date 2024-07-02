@@ -12,7 +12,7 @@ set(LOCAL_RAM_RESOURCES 4096 CACHE STRING "The amount of local RAM resources pas
 set(LOCAL_CPU_RESOURCES HOST_CPUS CACHE STRING "The amount of local CPU cores passed to bazel scheduler (e.g., 2).")
 set(TENSORFLOW_TAG "v${version}" CACHE STRING "The tensorflow release tag to be checked out (default v${version}).")
 option(INSTALL_PROTOBUF "Install protobuf compatible with tensorflow version." OFF)
-set(CMAKE_CXX_STANDARD 18 CACHE STRING "The C++ standard for building and linking the library (e.g., 14).")
+set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard for building and linking the library (e.g., 14).")
 
 # -------------
 # CMake Options
